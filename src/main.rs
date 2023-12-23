@@ -15,7 +15,6 @@ use hal::{clock::ClockControl, peripherals::*, prelude::*, Rng, IO};
 
 #[entry]
 fn main() -> ! {
-    #[cfg(feature = "log")]
     esp_println::logger::init_logger(log::LevelFilter::Info);
 
     let peripherals = Peripherals::take();
@@ -36,6 +35,8 @@ fn main() -> ! {
     let button = io.pins.gpio9.into_pull_down_input();
     let mut debounce_cnt = 500;
     let mut bluetooth = peripherals.BT;
+
+    println!("Hello, world!");
 
     loop {
         let connector = BleConnector::new(&init, &mut bluetooth);
