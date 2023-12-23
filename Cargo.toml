@@ -1,0 +1,25 @@
+[package]
+name = "esp32c6-no-std-ble"
+version = "0.1.0"
+authors = ["Leon <12817042+thedevleon@users.noreply.github.com>"]
+edition = "2021"
+license = "MIT OR Apache-2.0"
+
+[profile.release]
+opt-level = 3
+
+[profile.dev]
+debug = true
+opt-level = 2
+
+[dependencies]
+hal = { package = "esp32c6-hal", version = "0.6.0" }
+esp-backtrace = { version = "0.9.0", features = ["esp32c6", "panic-handler", "exception-handler", "print-uart"] }
+esp-println = { version = "0.7.0", features = ["esp32c6", "log"] }
+log = { version = "0.4.18" }
+esp-alloc = { version = "0.3.0" }
+esp-wifi  = { version = "0.1.1", default-features = false, features = ["esp32c6", "ble"] }
+embedded-svc = { version = "0.26", default-features = false, features = [] }
+embedded-io = "0.4.0"
+heapless = { version = "0.7.14", default-features = false }
+bleps = { git = "https://github.com/bjoernQ/bleps.git", features = ["macros"]}
